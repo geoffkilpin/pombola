@@ -147,25 +147,9 @@ NC072,UMSOBOMVU [Colesberg],http://za.mzalendo.dev.mysociety.org/mapit/area/8320
 ,Witzenberg,http://za-pombola.staging.mysociety.org/mapit/area/8346.html," 19.68891633540437,-32.94975907418436",Western Cape,Area,DA,,Kobus Marais,,,,,,,,
 ,Xariep,http://za.mzalendo.dev.mysociety.org/mapit/area/8373.html,"25.832860577638606,-29.84311159506367",Free State,Area,DA,Peter Frewen,,,,,,,,,
 ,Zululand                ,http://za.mzalendo.dev.mysociety.org/mapit/area/8383.html,"31.294262718242397,-27.811389775881118",Kwa-Zulu Natal,Area,DA,,Rafeek Shah,,,,,,,,
-,Free State,,,,Office,ACDP,,"STEVE SWART
-083 285 6290",,"051 5344499 or 
-073 399 2517
-
-",,"Shop 40, Veresa Building, Botshabelo, 
-9781
- Free State",,,,
-,Gauteng,,,,Office,ACDP,,"REV K R MESHOE
-082 926 5884",,011-262 2555,,"Shop 2 Upper Level
-Cnr Von Brandis & Kruger Street
-Krugersdorp 
-1739","P O Box 4010
-Rivonia
-2128",,,
-,Mpumalanga,,,,Office,ACDP,,"CHERYLLYN DUDLEY
-082 890 6520",,082 926 8005,,"Office 323c
-32 Bell Street
-Nelspruit 
-1200",,,,
+,Free State,,,,Office,ACDP,,"STEVE SWART 083 285 6290",,"051 5344499 or 073 399 2517 ",,"Shop 40, Veresa Building, Botshabelo, 9781 Free State",,,,
+,Gauteng,,,,Office,ACDP,,"REV K R MESHOE 082 926 5884",,011-262 2555,,"Shop 2 Upper Level Cnr Von Brandis & Kruger Street Krugersdorp 1739","P O Box 4010 Rivonia 2128",,,
+,Mpumalanga,,,,Office,ACDP,,"CHERYLLYN DUDLEY 082 890 6520",,082 926 8005,,"Office 323c 32 Bell Street Nelspruit 1200",,,,
 255,Acorn Hoek,,,,Office,ANC,Siwela V,Nyalungu RE,Dineo Mashego                       073 134 0328,013 795 5504,,"Shop 2, Mphiwe Family Complex, Acorn Hoek, 1360                                         P O Box 3401, Acorn Hoek, 1360",,,Bushbuckridge,13 (1-13)
 255,Acorn Hoek,,,,Office,ANC,Siwela V,Nyalungu RE,Dineo Mashego                       073 134 0328,013 795 5504,,"Shop 2, Mphiwe Family Complex, Acorn Hoek, 1360                                         P O Box 3401, Acorn Hoek, 1360",,,Bushbuckridge,13 (1-13)
 307,Aganang,,,,Office,ANC,Nong E,Baloyi RM,Mokgolo P,082 901 7344,015 221 0022,"Cnr Gelead & Knobel Rd, Ceres Moletjie, 0774                                                   P O Box 3782, Tibedi, 0774",,,Aganang,18 (1-18)
@@ -371,8 +355,7 @@ Nelspruit
 907,Rouxville,,,,Office,ANC,,Bikani FC,Mzwandile Plaatjie                   076 468 6760,051 663 0998,,"58 Phosholi Str, Rouxville, 9958",,,Mohokare,6 (1-6)
 409,Rustenburg,,,,Office,ANC,Modise T,Manganye J,Kgomotso Mthembu               072 765 8325,014 592 3537,014 592 4737,"112 Leyds Str, Midas Bld, Rustenburg, 0300                                                                     P O Box 5401, Rustenburg, 0300",,No internet,Rustenburg,38 (1-38)
 621,Salt Rivier,,,,Office,ANC,,Fransman ML,Glen Geswindt                             082 723 3024,021 447 7181,021 447 7176,"358 Victoria Str, Salt Rivier, 7925",,,City of Cape Town,111
-117,Sankopano Alex,,,,Office,ANC,Mbatha V,Fubbs JL                                     Bapela O,"Charlotte Manthosi
-071 835 1725",011 786 9486,011 786 9476,"128-2nd Str, Wynberg, 2090",,alexandra@ancpco-gp.co.za,Joburg,"9 (32, 72, 75, 76, 81, 105, 107-109)"
+117,Sankopano Alex,,,,Office,ANC,Mbatha V,Fubbs JL                                     Bapela O,"Charlotte Manthosi 071 835 1725",011 786 9486,011 786 9476,"128-2nd Str, Wynberg, 2090",,alexandra@ancpco-gp.co.za,Joburg,"9 (32, 72, 75, 76, 81, 105, 107-109)"
 209,Schagen,,,,Office,ANC,,Coleman EM                          Makhubela-Mashele LS,Susan Moloto                    083 727 9783,013 733 3376,013 733 3313,"Portion 9, Schagen Farm, 1207               P O Box 117, Schagen, 1207",,,Mbombela,8 (15-23)
 134,Sebokeng,,,,Office,ANC,Moerane N,Montsitsi D,Nhlapho S                                  072 195 7014,016 592 5355,016 592 4398,"Unit 21082, Zone 14, Sebokeng, 1983",,sebokeng@ancpco-gp.co.za,Emfuleni,"11 (2,17, 27, 28, 30-36)"
 338,Sefako Mapogo,,,,Office,ANC,Kekana P,Thbejane KSG,Shakong Sarah                            083 690 7700,015 633 7337,015 633 7765,"138 Old Mutual Bld, Unit F, Lebowakgomo, 0703",,,Lepelle Nkupi,29 (1-29)
@@ -431,8 +414,7 @@ Nelspruit
 119,Zojazem Motlana,,,,Office,ANC,Tsotetsi G,Kekana CD                               Ngwenya W,Ramothlalane Joseph           073 091 8915,011 932 1941,011 932 1939,"Old Mutual Bld, Grond Flr, Jabulani, 1868                                                                      P O Box 1868, Kwa Xuma, Soweto, 1868",,zojazem@ancpco-gp.co.za,Joburg,"5 (20, 21, 46, 51, 52)"
 ,Engcobo,,,,Office,COPE,,Mlindi Nhanha 079 189 9212 mnhanha@parliament.gov.za,,,,69 Court Lane Engcobo 5050,,,,
 ,Flagstaff,,,,Office,COPE,,Zola Mlenzana 076 234 5145 zmlenzana@parliament.gov.za,,,,21 Main Street  Flagstaff 4810,,,,
-,Free State,,,,Office,COPE,,Dennis Bloem 082 451 5718 dbloem@parliament.gov.za;Thozamile Botha 082 922 3675 tbotha@parliament.gov.za;Diratsagae “Papi” Kganare 082 560 2189 dkganare@parliament.gov.za;Cecelia Kots 083 286 7219 ckotsi@parliament.gov.za;Mosia Lekota 082 999 9944 mlekota@parliament.gov.za;,,,,"4th FLOOR Bloemfontein Club  8 Elizabeth Street 
-Bloemfontein 9300",,,,
+,Free State,,,,Office,COPE,,Dennis Bloem 082 451 5718 dbloem@parliament.gov.za;Thozamile Botha 082 922 3675 tbotha@parliament.gov.za;Diratsagae “Papi” Kganare 082 560 2189 dkganare@parliament.gov.za;Cecelia Kots 083 286 7219 ckotsi@parliament.gov.za;Mosia Lekota 082 999 9944 mlekota@parliament.gov.za;,,,,"4th FLOOR Bloemfontein Club  8 Elizabeth Street Bloemfontein 9300",,,,
 ,Gauteng,,,,Office,COPE,,Dirk Feldman 076 879 9899 dfeldman@parliament.gov.za;Juli Kilian 082 824 7459 jkilian@parliament.gov.za;Pakiso Mbhele 073 515 4789 pmbhele@parliament.gov.za;Constance Mosimane 078 154 2302 cmosimane@parliament.gov.za;Phumelele Ntshiqela 073 586 0205 pntshiqela@parliament.gov.za,,,,14 Floor Metropolitan Building 108 Fox Street Johannesburg 2001,,,,
 ,Graaf-Reinet,,,,Office,COPE,,Makhosazana Njobe 073 184 0554  mnjobe@parliament.gov.za,,,,33 Queen Street  Graaf – Reinet 6280,,,,
 ,Kwa-Zulu Natal,,,,Office,COPE,,Graham MacKenzie 082 422 2834 gmackenzie@parliament.gov.za;Graham McIntosh 083 708 9988 gmcintosh@parliament.gov.za;Deidre Carter 082 831 9168 dcarter@parliament.gov.za,,,,Port Edward Shopping Centre Port Edward 4279,,,,
@@ -442,24 +424,8 @@ Bloemfontein 9300",,,,
 ,North West,,,,Office,COPE,,Lorraine Mashiane 078 042 4507 lmashiane@parliament.gov.za;Paul Mnguni 072 474 8778 pmnguni@parliament.gov.za;Swaphi Plaatjie 072 240 0506 splaatjie@parliament.gov.za,,,,Office 182 Value Centre Nelson Mandela Street Mafikeng 2745,,,,
 ,Northern Cape,,,,Office,COPE,,Luzelle Adams 082 257 0107 ladams@parliament.gov.za;Sanna Plaatjie (Molao) 079 462 8656 saplaatjie@parliament.gov.za;Kenneth Sinclair 076 392 6893 ksinclair@parliament.gov.za,,,,NBS Building 2 – 4 Jones street Kimberley  8301,,,,
 ,Western Cape,,,,Office,COPE,,Onel De Beer 073 820 8441 odebeer@parliament.gov.za;Connie Diemu (Blaai) 084 629 0815 cdiemu@parliament.gov.za;Beryl Ferguson 082 452 6591 bferguson@parliament.gov.za;Nick Koornhof 083 775 7618 nkoornhof@parliament.gov.za;Leonard Ramatlakane 082 892 6866 lramatlakane@parliament.gov.za,,,,155 1st Avenue Parow 7500,,,,
-,Bredasdorp (Satellite Office),,,,Office,FF+,,CP Mulder,,,,"Van der Bijlstraat 5
-BREDASDORP",,,,
-,Cape Town,,,,Office,FF+,,CP Mulder,,021- 403 3489,,"No. 516 – Marks Building
-Parliamentstreet
-Cape Town",,,,
-,Centurion,,,,Office,FF+,,A Alberts,,012-665 1679,,"Second Floor
-Block 8
-Highveld Business Park
-11 Charles de Gaulle Street
-Centurion, Pretoria
-Gauteng",,,,
-,Centurion (Satellite Office),,,,Office,FF+,,A Alberts;PJ Groenewald;PWA Mulder;CP Mulder,,012-665 1679,,"Ground Floor
-Block 8
-Highveld Business Park
-11 Charles de Gaulle Street
-Centurion, Pretoria
-Gauteng",,,,
-,Stilfontein,,,,Office,FF+,,PJ Groenewald;PWA Mulder,,018-484 1086,018 - 484 1087,"H/v Breede - en Blydestraat
-STILFONTEIN, 2551
-NW","PO Box 583
-STILFONTEIN, 2550",,,
+,Bredasdorp (Satellite Office),,,,Office,FF+,,CP Mulder,,,,"Van der Bijlstraat 5 BREDASDORP",,,,
+,Cape Town,,,,Office,FF+,,CP Mulder,,021- 403 3489,,"No. 516 – Marks Building Parliamentstreet Cape Town",,,,
+,Centurion,,,,Office,FF+,,A Alberts,,012-665 1679,,"Second Floor Block 8 Highveld Business Park 11 Charles de Gaulle Street Centurion, Pretoria Gauteng",,,,
+,Centurion (Satellite Office),,,,Office,FF+,,A Alberts;PJ Groenewald;PWA Mulder;CP Mulder,,012-665 1679,,"Ground Floor Block 8 Highveld Business Park 11 Charles de Gaulle Street Centurion, Pretoria Gauteng",,,,
+,Stilfontein,,,,Office,FF+,,PJ Groenewald;PWA Mulder,,018-484 1086,018 - 484 1087,"H/v Breede - en Blydestraat STILFONTEIN, 2551 NW","PO Box 583 STILFONTEIN, 2550",,,
