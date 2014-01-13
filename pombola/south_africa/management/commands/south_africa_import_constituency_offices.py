@@ -148,6 +148,26 @@ def all_initial_forms(name, squash_initials=False):
             result = initials
         yield ' '.join(result + names[i:])
 
+
+
+party_name_translations = {
+    "ACDP":  "African Christian Democratic Party (ACDP)",
+    "AIC":   "AIC",
+    "ANC":   "African National Congress (ANC)",
+    "APC":   "African Peoples' Convention (APC)",
+    "AZAPO": "Azanian People's Organisation (AZAPO)",
+    "COPE":  "Congress of the People (COPE)",
+    "DA":    "Democratic Alliance (DA)",
+    "FF+":    "Freedom Front + (Vryheidsfront+, FF+)",
+    "ID":    "Independent Democrats (ID)",
+    "IFP":   "Inkatha Freedom Party (IFP)",
+    "MF":    "Minority Front (MF)",
+    "PAC":   "Pan Africanist Congress (PAC)",
+    "UCDP":  "United Christian Democratic Party (UCDP)",
+    "UDM":   "United Democratic Movement (UDM)",
+}
+
+
 # Build an list of tuples of (mangled_mp_name, person_object) for each
 # member of the National Assembly and delegate of the National Coucil
 # of Provinces:
@@ -202,7 +222,9 @@ def find_pombola_person(name_string, representative_type):
         if scored_names[0][0] >= 0.9:
             return scored_names[0][2]
         else:
-            verbose("Failed to find a match for " + name_string.encode('utf-8'))
+            verbose("Failed to find a match for %s (%s)" % (name_string.encode('utf-8'), representative_type))
+            for s in scored_names[:10]:
+                print "    ", s
             return None
     else:
         raise Exception, "Unknown representative_type '%s'" % (representative_type,)
@@ -344,7 +366,8 @@ class Command(LabelCommand):
                     # Collapse whitespace in the name to a single space:
                     name = re.sub(r'(?ms)\s+', ' ', name)
 
-                    mz_party = Organisation.objects.get(name=party)
+                    print party
+                    mz_party = Organisation.objects.get(name=party_name_translations[party])
 
                     if party_code:
                         organisation_name = "%s Constituency Area (%s): %s" % (party, party_code, name)

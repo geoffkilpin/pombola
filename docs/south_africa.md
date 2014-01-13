@@ -26,6 +26,7 @@ If you run into any issues with this you might need to remove the
 geocode cache at `pombola/south_africa/management/commands/.geocode-request-cache`.
 
     $ python manage.py south_africa_import_constituency_offices --commit --verbose pombola/south_africa/data/constituencies_and_offices/all_constituencies.csv
+    $ python manage.py south_africa_import_constituency_offices --commit --verbose pombola/south_africa/data/constituencies_and_offices/new-entries-for-1115.csv
 
 To load in some example SayIt data, fetch the speeches/fixtures/test_inputs/
 
