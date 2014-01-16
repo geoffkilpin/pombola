@@ -13,7 +13,7 @@
 # admin has not been used in the meantime to update entries.
 
 
-from collections import defaultdict, namedtuple
+from collections import defaultdict, namedtuple, OrderedDict
 import csv
 from difflib import SequenceMatcher
 from itertools import chain
@@ -107,7 +107,7 @@ class Command(LabelCommand):
 
         # Change the database entries as required
         self.change_contact_details_in_database()
-        # self.change_names_in_database()
+        self.change_names_in_database()
 
 
     # Store all the deltas in here. Form is
@@ -201,3 +201,57 @@ class Command(LabelCommand):
 
 
 
+    def change_names_in_database(self):
+
+        for col in self.delta_name_cols:
+            for original, replacement in self.deltas[col].items():
+
+                alternatives = self.generate_name_alternatives(original)
+
+                for name_to_try in alternatives:
+                    entries = Person.objects.filter(legal_name=original)
+                    if entries.count(): break
+
+                if entries.count():
+                    for entry in entries:
+                        print "Changing %s value in %s to %s" % (col, entry, replacement)
+
+                        if self.commit:
+                            entry.legal_name = replacement
+                            entry.save()
+
+                            entry.slug = slugify(replacement)
+                            # Check that the slug is not already in use
+                            if Person.objects.filter(slug=entry.slug).exists():
+                                print "ERROR: slug '%s' already in use" % entry.slug
+                            else:
+                                entry.save()
+
+                else:
+                    # If it is not in DB we can't update it. Perhaps it has
+                    # already been updated?
+                    if not Person.objects.filter(legal_name=replacement).exists():
+                        print "NOT FOUND:", col, "contact detail not found for any of ", " --- ".join(alternatives)
+
+
+    def generate_name_alternatives(self, name):
+
+        # Store all the alternatives we generate in here. Strip out duplicates
+        # later.
+        alternatives = []
+        alternatives.append(name)
+
+        # try with leading numbers stripped
+        name = re.sub(r'^\s*\d+[\s\.]*', '', name)
+        alternatives.append(name)
+
+        # loose trailing brackets with numbers in
+        name = re.sub(r'\s*\(\s*\d+\s*\)\s*', '', name)
+        alternatives.append(name)
+
+        # try with non-alphanumeric stripped
+        alternatives.append( re.sub(r'[^\s\w]+', '', name).strip() )
+
+        seen = OrderedDict([(a, True) for a in alternatives])
+
+        return seen.keys()
