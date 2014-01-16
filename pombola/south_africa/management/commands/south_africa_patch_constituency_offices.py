@@ -129,33 +129,33 @@ class Command(LabelCommand):
                 for col in self.delta_all_cols:
                     original, replacement = row[col].strip(), row['new ' + col].strip()
 
+                    # Names might need splitting into tuples
                     if col in self.delta_name_cols:
-                        # Names might need splitting into tuples
                         splitter = re.compile(r' [ \d]+')
-                        originals = filter(None, splitter.split(original))
-                        replacements = filter(None, splitter.split(replacement))
-                        # print '----'
-                        # print originals, replacements
-                        pairs = zip(originals, replacements)
-                        # print pairs
-
-                        # check that the pairs seem reasonable
-                        error_tuple = None
-                        errors_found = False
-                        for o,r in pairs:
-                            longest_word_in_original = max(re.split(r'\W+', o), key=len).lower()
-                            if longest_word_in_original not in r.lower():
-                                if errors_found:
-                                    if error_tuple:
-                                        print "-----WARNING-----", row_count, '::', error_tuple[0], '!=', error_tuple[1]
-                                        error_tuple = None
-                                    print "-----WARNING-----", row_count, '::', o, '!=', r
-                                else:
-                                    errors_found = True
-                                    error_tuple = (o,r)
-
                     else:
-                        pairs = [(original, replacement)]
+                        splitter = re.compile(r' \s+')
+
+                    originals = filter(None, splitter.split(original))
+                    replacements = filter(None, splitter.split(replacement))
+                    # print '----'
+                    # print originals, replacements
+                    pairs = zip(originals, replacements)
+                    # print pairs
+
+                    # check that the pairs seem reasonable
+                    error_tuple = None
+                    errors_found = False
+                    for o,r in pairs:
+                        longest_word_in_original = max(re.split(r'\W+', o), key=len).lower()
+                        if longest_word_in_original not in r.lower():
+                            if errors_found:
+                                if error_tuple:
+                                    print "-----WARNING-----", row_count, '::', error_tuple[0], '!=', error_tuple[1]
+                                    error_tuple = None
+                                print "-----WARNING-----", row_count, '::', o, '!=', r
+                            else:
+                                errors_found = True
+                                error_tuple = (o,r)
 
 
                     # Add to the deltas
@@ -170,6 +170,12 @@ class Command(LabelCommand):
 
     def change_contact_details_in_database(self):
 
+        kind_mappings = {
+            'Fax': 'fax',
+            'Physical Address': 'address',
+            'Tel': 'voice',
+        }
+
         for col in self.delta_contact_detail_cols:
             for original, replacement in self.deltas[col].items():
 
@@ -177,7 +183,7 @@ class Command(LabelCommand):
                     original    = original.rstrip(',') + ", South Africa"
                     replacement = replacement.rstrip(',') + ", South Africa"
 
-                entries = Contact.objects.filter(value=original)
+                entries = Contact.objects.filter(value=original, kind__slug=kind_mappings[col])
 
                 if entries.count():
                     for entry in entries:
@@ -190,7 +196,7 @@ class Command(LabelCommand):
                 else:
                     # If it is not in DB we can't update it. Perhaps it has
                     # already been updated?
-                    if not Contact.objects.filter(value=replacement).exists():
+                    if not Contact.objects.filter(value=replacement, kind__slug=kind_mappings[col]).exists():
                         print "NOT FOUND: %s contact detail not found for '%s'" % (col, original)
 
 
