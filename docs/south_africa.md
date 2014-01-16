@@ -28,6 +28,12 @@ geocode cache at `pombola/south_africa/management/commands/.geocode-request-cach
     $ python manage.py south_africa_import_constituency_offices --commit --verbose pombola/south_africa/data/constituencies_and_offices/all_constituencies.csv
     $ python manage.py south_africa_import_constituency_offices --commit --verbose pombola/south_africa/data/constituencies_and_offices/new-entries-for-1115.csv
 
+There are some issues in the original import that need correcting (as data has
+already been loaded into the staging database and changed there using the admin
+it is not possible simply to update the original imported CSV above):
+
+    $ python manage.py south_africa_patch_constituency_offices --commit pombola/south_africa/data/constituencies_and_offices/deltas.csv
+
 To load in some example SayIt data, fetch the speeches/fixtures/test_inputs/
 
     $ python manage.py load_akomantoso --dir <speeches/fixtures/test_inputs/> --commit
