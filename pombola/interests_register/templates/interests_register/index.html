@@ -55,7 +55,7 @@ Select declarations from
 {# TODO - generate from database #}
 <select id="category" name="category">
     {% for category in context.categories %}
-        <option value="{{ category.id }}"{% if context.category == category.id %} selected="selected"{% endif %}>{{ category.name }}</option>
+        <option value="{{ category.id }}"{% if category.id == context.category|add:0 %} selected="selected"{% endif %}>{{ category.name }}</option>
     {% endfor %}
 </select> 
 
