@@ -9,13 +9,13 @@ Members' Interests
 <script type="text/javascript" charset="utf-8">
 $( document ).ready(function() {
     $('#category').change(function() {
-        if ($('#category').val()=='5') {
+        if ($('#category').find(":selected").text()=='GIFTS AND HOSPITALITY') {
             $('#actionoptions').html('<select id="action" name="action"><option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option><option value="groupby"{% if context.action == 'groupby' %} selected="selected"{% endif %}>Grouped by Source</option><option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option></select> ');
         }
-        else if ($('#category').val()=='10') {
+        else if ($('#category').find(":selected").text()=='SPONSORSHIPS') {
             $('#actionoptions').html('<select id="action" name="action"><option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option><option value="groupby"{% if context.action == 'groupby' %} selected="selected"{% endif %}>Grouped by Source</option><option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option></select> ');
         }
-        else if ($('#category').val()=='9') {
+        else if ($('#category').find(":selected").text()=='TRAVEL') {
             $('#actionoptions').html('<select id="action" name="action"><option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option><option value="groupby"{% if context.action == 'groupby' %} selected="selected"{% endif %}>Grouped by Sponsor</option><option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option></select> ');
         }
         else {
@@ -39,6 +39,7 @@ $( document ).ready(function() {
             $('#actionoptionsleveltwo').html('');
         }
     });
+    $('#category').change();
 });
 function actionbind() {
     
@@ -53,16 +54,9 @@ function actionbind() {
 Select declarations from 
 {# TODO - generate from database #}
 <select id="category" name="category">
-<option value="2"{% if context.category == '2' %} selected="selected"{% endif %}>Shares and Other Financial Interests</option>
-<option value="7"{% if context.category == '7' %} selected="selected"{% endif %}>Renumerated Employment Outside Parliament</option>
-<option value="3"{% if context.category == '3' %} selected="selected"{% endif %}>Directorship and Partnerships</option>
-<option value="8"{% if context.category == '8' %} selected="selected"{% endif %}>Consultancies or Retainerships</option>
-<option value="10"{% if context.category == '10' %} selected="selected"{% endif %}>Sponsorships</option>
-<option value="5"{% if context.category == '5' %} selected="selected"{% endif %}>Gifts and Hospitality</option>
-<option value="6"{% if context.category == '6' %} selected="selected"{% endif %}>Benefits</option>
-<option value="9"{% if context.category == '9' %} selected="selected"{% endif %}>Travel</option>
-<option value="1"{% if context.category == '1' %} selected="selected"{% endif %}>Land and Property</option>
-<option value="4"{% if context.category == '4' %} selected="selected"{% endif %}>Pensions</option>
+    {% for category in context.categories %}
+        <option value="{{ category.id }}"{% if context.category == category.id %} selected="selected"{% endif %}>{{ category.name }}</option>
+    {% endfor %}
 </select> 
 
 <span id="actionoptions">

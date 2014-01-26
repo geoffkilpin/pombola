@@ -17,7 +17,8 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         context = {}
         
-        context['organisations']=Organisation.objects.all()
+        context['organisations'] = Organisation.objects.all()
+        context['categories'] = Category.objects.all()
         if 'action' not in self.request.GET:
             return context
         
