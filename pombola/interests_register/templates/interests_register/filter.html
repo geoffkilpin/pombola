@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Members' Interests
+{% endblock %}
+
+{% block content %}
+
+
+{% if list_declarations %}
+
+
+{% for declaration in list_declarations %}
+  <strong>Person:</strong> {{ declaration.person }}<br />
+  {% for line in declaration.line_items.all %}
+    <strong>{{ line.key }}:</strong> {{ line.value }}<br />
+  {% endfor %}<br/>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

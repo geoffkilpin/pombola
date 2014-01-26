@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Members' Interests
+{% endblock %}
+
+{% block extra_headers %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+$( document ).ready(function() {
+    $('#category').change(function() {
+        if ($('#category').val()=='5') {
+            $('#actionoptions').html('<select id="action" name="action"><option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option><option value="groupby"{% if context.action == 'groupby' %} selected="selected"{% endif %}>Grouped by Source</option><option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option></select> ');
+        }
+        else if ($('#category').val()=='10') {
+            $('#actionoptions').html('<select id="action" name="action"><option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option><option value="groupby"{% if context.action == 'groupby' %} selected="selected"{% endif %}>Grouped by Source</option><option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option></select> ');
+        }
+        else if ($('#category').val()=='9') {
+            $('#actionoptions').html('<select id="action" name="action"><option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option><option value="groupby"{% if context.action == 'groupby' %} selected="selected"{% endif %}>Grouped by Sponsor</option><option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option></select> ');
+        }
+        else {
+            $('#actionoptions').html('<select id="action" name="action"><option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option><option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option></select> ');
+        }
+        $('#actionoptionsleveltwo').html('');
+        $('#action').change(function() {
+            if ($('#action').val()=='where') {
+                $('#actionoptionsleveltwo').html(' person is a member of <select name="organisation">{% for organisation in context.organisations %} <option value="{{ organisation.slug }}">{{ organisation.name }}</option> {% endfor %}</select>');
+            }
+            else {
+                $('#actionoptionsleveltwo').html('');
+            }
+        });
+    });
+    $('#action').change(function() {
+        if ($('#action').val()=='where') {
+            $('#actionoptionsleveltwo').html(' person is a member of <select name="organisation">{% for organisation in context.organisations %} <option value="{{ organisation.slug }}">{{ organisation.name }}</option> {% endfor %}</select>');
+        }
+        else {
+            $('#actionoptionsleveltwo').html('');
+        }
+    });
+});
+function actionbind() {
+    
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<form action="{% url interests_register:index %}" method="get">
+
+Select declarations from 
+{# TODO - generate from database #}
+<select id="category" name="category">
+<option value="2"{% if context.category == '2' %} selected="selected"{% endif %}>Shares and Other Financial Interests</option>
+<option value="7"{% if context.category == '7' %} selected="selected"{% endif %}>Renumerated Employment Outside Parliament</option>
+<option value="3"{% if context.category == '3' %} selected="selected"{% endif %}>Directorship and Partnerships</option>
+<option value="8"{% if context.category == '8' %} selected="selected"{% endif %}>Consultancies or Retainerships</option>
+<option value="10"{% if context.category == '10' %} selected="selected"{% endif %}>Sponsorships</option>
+<option value="5"{% if context.category == '5' %} selected="selected"{% endif %}>Gifts and Hospitality</option>
+<option value="6"{% if context.category == '6' %} selected="selected"{% endif %}>Benefits</option>
+<option value="9"{% if context.category == '9' %} selected="selected"{% endif %}>Travel</option>
+<option value="1"{% if context.category == '1' %} selected="selected"{% endif %}>Land and Property</option>
+<option value="4"{% if context.category == '4' %} selected="selected"{% endif %}>Pensions</option>
+</select> 
+
+<span id="actionoptions">
+    <select id="action" name="action">
+    <option value="orderby"{% if context.action == "orderby" %} selected="selected"{% endif %}>Ordered by Number of Declarations per Person</option>
+    <option value="groupby"{% if context.action == 'group' %} selected="selected"{% endif %}>Grouped by Source</option>
+    <option value="where"{% if context.action == 'where' %} selected="selected"{% endif %}>Where</option>
+    </select> 
+</span>
+<span id="actionoptionsleveltwo">
+    {% if context.action == 'where' %}
+    person is a member of <select name="organisation">{% for organisation in context.organisations %} <option value="{{ organisation.slug }}"{% if context.organisation == organisation.slug %} selected="selected"{% endif %}>{{ organisation.name }}</option> {% endfor %}</select>
+    {% endif %}
+</span> 
+from 
+<select id="year" name="year">
+<option value="all">All Years</option>
+<option value="2012">2012</option>
+<option value="2011">2011</option>
+</select>
+{# Select {Declarations, People, Locations} {Ordered by / Where} ({Num land, num directorships, etc.} / {Nothing declared}) #}
+<input type="submit" value="Search" />
+</form>
+
+{% if context.orderby %}
+<h4>Viewing declarations from all years ordered by number of {{ context.categoryname }} declarations</h4>
+    <table>
+    <tr><th>Year</th><th>Person</th><th>Number of Declarations</th><th></th></tr>
+    {% for declaration in context.orderby %}
+        <tr><td>{{ declaration.release.date.year }}</td><td>{{ declaration.person }}</td><td>{{ declaration.c }}</td><td><a href="{% url interests_register:filter %}?person_id={{ declaration.person_id }}&release={{ declaration.release_id }}&category={{ declaration.category_id }}">View Declarations</a></td></li>
+    {% endfor %}
+    </table>
+{% elif context.groupby %}
+<h4>Viewing sources of gifts from all years ordered by number of gifts</h4>
+    <table>
+    <tr><th>Source</th><th>Number of Gifts</th><th></th></tr>
+    {% for entrylineitem in context.groupby %}
+        <tr><td>{{ entrylineitem.value }}</td><td>{{ entrylineitem.c }}</td><td><a href="{% url interests_register:filter %}?source={{ entrylineitem.value }}&category={{ context.category }}">View Declarations</a></td></li>
+    {% endfor %}
+    </table>
+{% elif context.declarations %}
+<h4>Viewing sources of gifts from all years ordered by number of gifts</h4>
+<table>
+<tr>
+    {{ header.source }}
+{% for header in context.headers %}
+<th>{{ header }}</th>
+{% endfor %}</tr>
+{% for declaration in context.declarations %}
+<tr>
+{% for value in declaration %}
+<td>{{ value }}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% else %}
+    <p>No declarations are available.</p>
+{% endif %}
+{% endblock %}

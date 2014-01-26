@@ -108,6 +108,10 @@ if settings.ENABLED_FEATURES['votematch']:
         (r'^votematch/', include('pombola.votematch.urls')),
     )
 
+# membersinterests
+urlpatterns += patterns('',
+    (r'^interests/', include('pombola.interests_register.urls', namespace="interests_register")),
+)
 
 # # spinner - uncomment if needed. Not needed just to display spinner on the
 # # homepage using carousel.
