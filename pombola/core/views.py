@@ -49,8 +49,11 @@ def home(request):
     impressions = None
     if settings.COUNTRY_APP == 'south_africa':
         articles = InfoPage.objects.filter(kind=InfoPage.KIND_BLOG).order_by("-publication_date")
-        that_week_in_parliament = articles.filter(categories__slug='week-parliament')[:4]
-        impressions = articles.filter(categories__slug='impressions')[:4]
+        that_week_in_parliament = articles.filter(categories__slug='week-parliament')[:3]
+        impressions = articles.filter(categories__slug='impressions')[:3]
+        advocacy_campaigns = articles.filter(categories__slug='advocacy-campaigns')[:1]
+        commentary = articles.filter(categories__slug='commentary')[:1]
+        mp_corner = articles.filter(categories__slug='mp-corner')[:1]
 
     return render_to_response(
         'home.html',
@@ -60,6 +63,9 @@ def home(request):
           'editable_content': editable_content,
           'that_week_in_parliament': that_week_in_parliament,
           'impressions': impressions,
+          'advocacy_campaigns': advocacy_campaigns,
+          'commentary': commentary,
+          'mp_corner': mp_corner,
         },
         context_instance=RequestContext(request)
     )

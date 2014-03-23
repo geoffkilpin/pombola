@@ -63,11 +63,11 @@
                 <h3>
                 <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
                 </h3>
-                <p class="meta">{{ article.publication_date|date }}</p>
+                <p class="meta">{{ article.publication_date|date }} | <a class="readmore" href="{{ article.get_absolute_url }}">Read More &#187;</a></p>
                 <p>{{ article.content|truncatewords_html:32 }}</p>
-                <p><a class="readmore" href="{{ article.get_absolute_url }}">More &#187;</a></p>
             </li>
             {% endfor %}
+            <li><a class="readmore" href="{% url 'info_blog_category' slug='week-parliament' %}">See All &#187;</a></li>
             </ul>
         </div>
 
@@ -79,13 +79,42 @@
                 <h3>
                 <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
                 </h3>
-                <p class="meta">{{ article.publication_date|date }}</p>
+                <p class="meta">{{ article.publication_date|date }} | <a class="readmore" href="{{ article.get_absolute_url }}">Read More &#187;</a></p>
                 <p>{{ article.content|truncatewords_html:32 }}</p>
-                <p><a class="readmore" href="{{ article.get_absolute_url }}">More &#187;</a></p>
             </li>
             {% endfor %}
+            <li><a class="readmore" href="{% url 'info_blog_category' slug='impressions' %}">See All &#187;</a></li>
             </ul>
 
+        </div>
+
+        <div class="home-news-bottom">
+            <div class="item">
+                <h2><a href="{% url 'info_blog_category' slug='commentary' %}">COMMENTARY</a></h2>
+                {% for article in commentary %}
+                    <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+                    <p class="meta">{{ article.publication_date|date }} | <a class="readmore" href="{{ article.get_absolute_url }}">Read More &#187;</a></p>
+                    <p>{{ article.content|truncatewords_html:32 }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="item">
+                <h2><a href="{% url 'info_blog_category' slug='advocacy-campaigns' %}">ADVOCACY CAMPAIGNS</a></h2>
+                {% for article in advocacy_campaigns %}
+                    <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+                    <p class="meta">{{ article.publication_date|date }} | <a class="readmore" href="{{ article.get_absolute_url }}">Read More &#187;</a></p>
+                    <p>{{ article.content|truncatewords_html:32 }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="item">
+                <h2><a href="{% url 'info_blog_category' slug='mp-corner' %}">MP CORNER</a></h2>
+                {% for article in mp_corner %}
+                    <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+                    <p class="meta">{{ article.publication_date|date }} | <a class="readmore" href="{{ article.get_absolute_url }}">Read More &#187;</a></p>
+                    <p>{{ article.content|truncatewords_html:32 }}</p>
+                {% endfor %}
+            </div>
         </div>
 
     </div>
