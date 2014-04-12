@@ -13,6 +13,7 @@ def add_settings( request ):
             'DISQUS_USE_IDENTIFIERS':       settings.DISQUS_USE_IDENTIFIERS,
             'TWITTER_USERNAME':             settings.TWITTER_USERNAME,
             'TWITTER_WIDGET_ID':            settings.TWITTER_WIDGET_ID,
+            'FACEBOOK_APP_ID':              settings.FACEBOOK_APP_ID,
             'BLOG_RSS_FEED':                settings.BLOG_RSS_FEED,
             'ENABLED_FEATURES':             settings.ENABLED_FEATURES,
             'COUNTRY_APP':                  settings.COUNTRY_APP,

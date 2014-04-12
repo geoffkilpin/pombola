@@ -19,6 +19,16 @@
     {# Hide bread crumbs on the home page. #}
 {% endblock %}
 
+{% block extra_head_meta %}
+<meta property="og:title" content="People's Assembly" />
+<meta property="og:site_name" content="The People's Assembly" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="The People’s Assembly website connects ordinary people and their elected representatives by tracking the work of Parliament and other South African institutions." />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:image" content="http://{{ request.META.HTTP_HOST }}/static/images/za-logo-mobile.png" />{% comment %}There should be a better way to get the image absolute URL. This will need to be changed to support https - perhaps using request.scheme under Django 1.7{% endcomment %}
+<meta property="fb:app_id" content="{{ settings.FACEBOOK_APP_ID }}" />
+{% endblock %}
+
 {% block intro_content %}
     <div id="front_intro">
         <div class="page-wrapper wrapper ">

@@ -1,9 +1,20 @@
 {# For South Africa the default person section is the experience tab #}
 {% extends 'core/person_base.html' %}
+{% load thumbnail %}
 
 {% block extra_js_to_load %}
 pombola_settings.extra_js.push('js/tabs.js')
 {% endblock extra_js_to_load %}
+
+{% block extra_head_meta %}
+<meta property="og:title" content="{{ person.name }}" />
+<meta property="og:site_name" content="The People's Assembly" />
+<meta property="og:type" content="profile" />
+<meta property="og:description" content="{% if person.summary %}{{ person.summary|truncatewords_html:40|striptags }}{% elif positions.count %}{% for position in positions %}{{ position.title }}: {{ position.organisation }}{% if not forloop.last %} | {% endif %}{% endfor %}{% else %}{{ person.name }}'s profile on the People's Assembly.{% endif %}" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:image" content="http://{{ request.META.HTTP_HOST }}{% thumbnail person.primary_image "210x210" crop="center" as im %}{{ im.url }}{% empty %}/static/images/za-logo-mobile.png{% endthumbnail %}" />{% comment %}There should be a better way to get the image absolute URL. This will need to be changed to support https - perhaps using request.scheme under Django 1.7{% endcomment %}
+<meta property="fb:app_id" content="{{ settings.FACEBOOK_APP_ID }}" />
+{% endblock %}
 
 {% block object_tagline %}
   <p>

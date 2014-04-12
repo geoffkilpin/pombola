@@ -4,6 +4,16 @@
     {{ object.title }}
 {% endblock %}
 
+{% block extra_head_meta %}
+<meta property="og:title" content="{{ object.title }}" />
+<meta property="og:site_name" content="The People's Assembly" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content="{{ object.content|truncatewords_html:40|striptags }}" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:image" content="http://{{ request.META.HTTP_HOST }}/static/images/za-logo-mobile.png" />{% comment %}There should be a better way to get the image absolute URL. This will need to be changed to support https - perhaps using request.scheme under Django 1.7{% endcomment %}
+<meta property="fb:app_id" content="{{ settings.FACEBOOK_APP_ID }}" />
+{% endblock %}
+
 {% block content %}
 
 {% include "disqus_javascript.html" %}
