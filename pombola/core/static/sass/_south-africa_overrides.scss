@@ -1951,6 +1951,15 @@ ul.pager {
     ul, p {
         max-width: 580px;
     }
+
+    .social-media-buttons {
+        span {
+            float: left;
+        }
+        .clear {
+            clear: both;
+        }
+    }
 }
 
 .blog-list {

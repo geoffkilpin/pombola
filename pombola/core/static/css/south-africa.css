@@ -5158,6 +5158,12 @@ ul.pager li.next {
 .blog-post ul, .blog-post p {
   max-width: 580px;
 }
+.blog-post .social-media-buttons span {
+  float: left;
+}
+.blog-post .social-media-buttons .clear {
+  clear: both;
+}
 
 .blog-list .blog-in-a-list {
   border-bottom: 1px solid #d2d2ce;
