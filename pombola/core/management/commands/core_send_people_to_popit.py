@@ -230,6 +230,26 @@ class Command(BaseCommand):
                 if settings.COUNTRY_APP == 'south_africa':
                     person_properties['pa_url'] = settings.ZA_BASE_URL + person.get_absolute_url()
 
+                    personinterests = person.interests_register_entries.all()
+                    if personinterests:
+                        interests = {}
+                        for entry in personinterests:
+                            release = entry.release
+                            category = entry.category
+                            if release.name not in interests:
+                                interests[release.name] = {}
+                            if category.name not in interests[release.name]:
+                                interests[release.name][category.name] = []
+
+                            #assuming no entrylineitems with duplicate keys within an entry
+                            entrylineitems = {}
+                            for entrylineitem in entry.line_items.all():
+                                entrylineitems[entrylineitem.key] = entrylineitem.value
+
+                            interests[release.name][category.name].append(entrylineitems)
+
+                        person_properties['interests_register'] = interests
+
                 person_id = popit.persons.post(person_properties)['result']['id']
                 for position in person.position_set.all():
                     if not (position.title and position.title.name):
