@@ -11,6 +11,7 @@ import urlparse
 from collections import defaultdict
 
 from django.core.management.base import BaseCommand, CommandError
+from django.conf import settings
 from django.db import transaction
 
 from django_date_extensions.fields import ApproximateDate
@@ -124,6 +125,14 @@ def create_organisations(popit):
                           'category': oslug_to_category[o.slug]}
             add_identifiers_to_properties(o, properties)
             add_contact_details_to_properties(o, properties)
+            if settings.COUNTRY_APP == 'south_africa':
+                if o.kind.slug == 'constituency-office' or o.kind.slug == 'constituency-area':
+                    #assume constituency offices have only one linked location
+                    places = o.place_set.all()
+                    if places and places[0].location:
+                        properties['lat'] = places[0].location.y
+                        properties['lng'] = places[0].location.x
+                properties['pa_url'] = settings.ZA_BASE_URL + o.get_absolute_url()
             new_organisation = popit.organizations.post(properties)
             slug_to_id[o.slug] = new_organisation['result']['id']
     return slug_to_id
@@ -217,6 +226,10 @@ class Command(BaseCommand):
                 add_identifiers_to_properties(person, person_properties)
                 add_contact_details_to_properties(person, person_properties)
                 add_other_names(person, person_properties)
+
+                if settings.COUNTRY_APP == 'south_africa':
+                    person_properties['pa_url'] = settings.ZA_BASE_URL + person.get_absolute_url()
+
                 person_id = popit.persons.post(person_properties)['result']['id']
                 for position in person.position_set.all():
                     if not (position.title and position.title.name):
