@@ -2375,15 +2375,39 @@ ul.pager {
 }
 
 .party-list {
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
     h3 {
         text-transform: none;
         font-size: 1.875em;
         line-height: 1.2em;
         @include lato-bold;
+
+        @media only all and (min-width: 640px), print {
+            margin-right: 5em;
+        }
     }
     .for-province {
         @include lato-regular;
         color: #777;
         font-size: 0.7em;
+    }
+    .back-to-top {
+        color: #777;
+        text-decoration: none;
+        font-size: 0.875em;
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: underline;
+            color: $colour_primary;
+        }
+         @media only all and (min-width: 640px), print {
+            position: absolute;
+            top: 0.5em;
+            right: 0;
+        }
     }
 }
