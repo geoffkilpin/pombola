@@ -5574,7 +5574,49 @@ ul.pager li.next {
   margin-bottom: 0.5em;
   line-height: 1.2em;
 }
-.province-header .province-subtitle a {
+
+/* Overview page */
+.general-election-information {
+  /**
+   * For IE 6/7 only
+   * Include this rule to trigger hasLayout and contain floats.
+   */
+  padding: 2em 0;
+  border-bottom: 1px solid #ccc;
+}
+.general-election-information:before, .general-election-information:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.general-election-information:after {
+  clear: both;
+}
+.general-election-information {
+  *zoom: 1;
+}
+@media only all and (min-width: 640px), print {
+  .general-election-information #election_countdown {
+    float: right;
+    width: 34%;
+  }
+  .general-election-information #election_countdown .countdown_row {
+    position: static;
+    right: auto;
+  }
+}
+
+@media only all and (min-width: 640px), print {
+  .election-introduction {
+    float: left;
+    width: 63%;
+    margin-right: 3%;
+  }
+}
+
+/* Province pages */
+.province-subtitle a {
   color: #017b58;
   font-size: 1.5em;
   font-family: 'latoregular', 'Helvetica Neue', Arial, Helvetica, Helmet, Freesans;
@@ -5582,16 +5624,16 @@ ul.pager li.next {
   text-transform: capitalize;
   text-decoration: none;
 }
-.province-header .province-subtitle a .change-province {
+.province-subtitle a .change-province {
   font-size: 0.583333333em;
   text-decoration: none;
   color: #777;
 }
-.province-header .province-subtitle a:hover, .province-header .province-subtitle a:active, .province-header .province-subtitle a:focus {
+.province-subtitle a:hover, .province-subtitle a:active, .province-subtitle a:focus {
   color: #e23d28;
   text-decoration: underline;
 }
-.province-header .province-subtitle a:hover .change-province, .province-header .province-subtitle a:active .change-province, .province-header .province-subtitle a:focus .change-province {
+.province-subtitle a:hover .change-province, .province-subtitle a:active .change-province, .province-subtitle a:focus .change-province {
   color: #e23d28;
 }
 
