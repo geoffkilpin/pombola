@@ -5414,24 +5414,19 @@ ul.pager li.next {
   color: #fff;
 }
 
-@media only all and (min-width: 640px), print {
-  .elections-home-intro {
-    background-image: url("/static/images/elections-icon.png");
-    background-position: left center;
-    background-repeat: no-repeat;
-  }
-  .elections-home-intro h2, .elections-home-intro p {
-    margin-left: 120px;
-  }
-}
-
 .elections-home-intro {
   position: relative;
 }
 @media only all and (min-width: 640px), print {
   .elections-home-intro {
+    background-image: url("/static/images/elections-icon.png");
+    background-position: left center;
+    background-repeat: no-repeat;
     float: left;
     width: 67%;
+  }
+  .elections-home-intro h2, .elections-home-intro p {
+    margin-left: 120px;
   }
 }
 

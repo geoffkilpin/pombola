@@ -2204,23 +2204,18 @@ ul.pager {
     }
 }
 .elections-home-intro {
+    position: relative;
     @media only all and (min-width: 640px), print {
         background-image: url('/static/images/elections-icon.png');
         background-position: left center;
         background-repeat: no-repeat;
+        float: left;
+        width: 67%;
         h2, p {
             margin-left: 120px;
         }
     }
 
-}
-
-.elections-home-intro {
-    position: relative;
-    @media only all and (min-width: 640px), print {
-        float: left;
-        width: 67%;
-    }
 }
 
 #election_countdown {
