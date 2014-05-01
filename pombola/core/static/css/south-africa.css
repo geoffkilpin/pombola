@@ -5414,15 +5414,34 @@ ul.pager li.next {
   color: #fff;
 }
 
-.elections-home-intro,
+@media only all and (min-width: 640px), print {
+  .elections-home-intro {
+    background-image: url("/static/images/elections-icon.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+  .elections-home-intro h2, .elections-home-intro p {
+    margin-left: 120px;
+  }
+}
+
+.elections-home-intro {
+  position: relative;
+}
+@media only all and (min-width: 640px), print {
+  .elections-home-intro {
+    float: left;
+    width: 67%;
+  }
+}
+
 #election_countdown {
   position: relative;
 }
 @media only all and (min-width: 640px), print {
-  .elections-home-intro,
   #election_countdown {
     float: left;
-    width: 50%;
+    width: 33%;
   }
 }
 
@@ -5443,6 +5462,11 @@ ul.pager li.next {
   display: block;
   font-family: 'Oswald', 'Arial Narrow', 'Helvetica Neue', Arial, Helvetica, Helmet, Freesans sans-serif;
   font-size: 3.75em;
+}
+@media (min-width: 640px) and (max-width: 880px) {
+  .countdown_amount {
+    font-size: 2.5em;
+  }
 }
 .countdown_amount:after {
   content: ":";

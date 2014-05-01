@@ -2203,13 +2203,31 @@ ul.pager {
         color: #fff;
     }
 }
+.elections-home-intro {
+    @media only all and (min-width: 640px), print {
+        background-image: url('/static/images/elections-icon.png');
+        background-position: left center;
+        background-repeat: no-repeat;
+        h2, p {
+            margin-left: 120px;
+        }
+    }
 
-.elections-home-intro,
+}
+
+.elections-home-intro {
+    position: relative;
+    @media only all and (min-width: 640px), print {
+        float: left;
+        width: 67%;
+    }
+}
+
 #election_countdown {
     position: relative;
     @media only all and (min-width: 640px), print {
         float: left;
-        width: 50%;
+        width: 33%;
     }
 }
 
@@ -2232,6 +2250,10 @@ ul.pager {
     display: block;
     font-family: 'Oswald', 'Arial Narrow', 'Helvetica Neue', Arial, Helvetica, Helmet, Freesans sans-serif;
     font-size: 3.75em;
+    @media (min-width: 640px) and (max-width: 880px) {
+        font-size: 2.5em;
+    }
+
     &:after {
         content: ":";
     }
