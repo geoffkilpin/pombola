@@ -5598,7 +5598,7 @@ ul.pager li.next {
   position: relative;
   border-bottom: 1px solid #ccc;
   margin-bottom: 2em;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
 }
 .party-list h3 {
   text-transform: none;
@@ -5617,6 +5617,15 @@ ul.pager li.next {
   font-weight: normal !important;
   color: #777;
   font-size: 0.7em;
+}
+.party-list ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  -webkit-column-count: 2;
+  margin-bottom: 1em;
+}
+.party-list ul li {
+  list-style: none outside none;
 }
 .party-list .back-to-top {
   color: #777;
