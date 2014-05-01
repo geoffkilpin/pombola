@@ -2214,6 +2214,18 @@ ul.pager {
         h2, p {
             margin-left: 120px;
         }
+        p {
+            @include lato-regular;
+            font-size: 1.125em;
+        }
+        a {
+            text-decoration: none;
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
     }
 
 }

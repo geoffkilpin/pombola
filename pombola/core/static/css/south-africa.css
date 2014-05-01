@@ -5428,6 +5428,17 @@ ul.pager li.next {
   .elections-home-intro h2, .elections-home-intro p {
     margin-left: 120px;
   }
+  .elections-home-intro p {
+    font-family: 'latoregular', 'Helvetica Neue', Arial, Helvetica, Helmet, Freesans;
+    font-weight: normal !important;
+    font-size: 1.125em;
+  }
+  .elections-home-intro a {
+    text-decoration: none;
+  }
+  .elections-home-intro a:hover, .elections-home-intro a:active, .elections-home-intro a:focus {
+    text-decoration: underline;
+  }
 }
 
 #election_countdown {
