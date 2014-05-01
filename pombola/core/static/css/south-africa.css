@@ -5575,6 +5575,29 @@ ul.pager li.next {
   line-height: 1.2em;
 }
 
+.election-page-subtitle {
+  color: #017b58;
+  font-size: 1.5em;
+  font-family: 'latoregular', 'Helvetica Neue', Arial, Helvetica, Helmet, Freesans;
+  font-weight: normal !important;
+}
+.election-page-subtitle a {
+  color: #017b58;
+  text-decoration: none;
+}
+.election-page-subtitle a .change-province {
+  font-size: 0.583333333em;
+  text-decoration: none;
+  color: #777;
+}
+.election-page-subtitle a:hover, .election-page-subtitle a:active, .election-page-subtitle a:focus {
+  color: #e23d28;
+  text-decoration: underline;
+}
+.election-page-subtitle a:hover .change-province, .election-page-subtitle a:active .change-province, .election-page-subtitle a:focus .change-province {
+  color: #e23d28;
+}
+
 /* Overview page */
 .general-election-information {
   /**
@@ -5616,27 +5639,6 @@ ul.pager li.next {
 }
 
 /* Province pages */
-.province-subtitle a {
-  color: #017b58;
-  font-size: 1.5em;
-  font-family: 'latoregular', 'Helvetica Neue', Arial, Helvetica, Helmet, Freesans;
-  font-weight: normal !important;
-  text-transform: capitalize;
-  text-decoration: none;
-}
-.province-subtitle a .change-province {
-  font-size: 0.583333333em;
-  text-decoration: none;
-  color: #777;
-}
-.province-subtitle a:hover, .province-subtitle a:active, .province-subtitle a:focus {
-  color: #e23d28;
-  text-decoration: underline;
-}
-.province-subtitle a:hover .change-province, .province-subtitle a:active .change-province, .province-subtitle a:focus .change-province {
-  color: #e23d28;
-}
-
 .party-list {
   position: relative;
   border-bottom: 1px solid #ccc;

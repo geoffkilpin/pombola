@@ -3,7 +3,7 @@
 {% block content %}
     <div class="election-page-header" id="top">
         <h2>Candidates for the {{ election_year }} {{ election_type }} election</h2>
-        <p class="province-subtitle"> <a href="#">{{ province_name }} <span class="change-province">change</span></a></p>
+        <p class="election-page-subtitle"> <a href="#">{{ province_name }} <span class="change-province">change</span></a></p>
     </div>
 
 		{% for party in province_election_lists %}

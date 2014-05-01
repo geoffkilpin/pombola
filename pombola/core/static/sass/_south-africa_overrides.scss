@@ -2349,7 +2349,30 @@ ul.pager {
         margin-bottom: 0.5em;
         line-height: 1.2em;
     }
+}
 
+.election-page-subtitle {
+    color: $colour_green;
+    font-size: 1.5em;
+    @include lato-regular;
+    a {
+        color: $colour_green;
+        text-decoration: none;
+        .change-province {
+            font-size: 0.583333333em;
+            text-decoration: none;
+            color: #777;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            color: $colour_primary;
+            text-decoration: underline;
+            .change-province {
+                color: $colour_primary;
+            }
+        }
+    }
 }
 
 /* Overview page */
@@ -2379,29 +2402,7 @@ ul.pager {
 
 
 /* Province pages */
-.province-subtitle {
-    a {
-        color: $colour_green;
-        font-size: 1.5em;
-        @include lato-regular;
-        text-transform: capitalize;
-        text-decoration: none;
-        .change-province {
-            font-size: 0.583333333em;
-            text-decoration: none;
-            color: #777;
-        }
-        &:hover,
-        &:active,
-        &:focus {
-            color: $colour_primary;
-            text-decoration: underline;
-            .change-province {
-                color: $colour_primary;
-            }
-        }
-    }
-}
+
 
 .party-list {
     position: relative;
