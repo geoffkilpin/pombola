@@ -5563,12 +5563,13 @@ ul.pager li.next {
   *zoom: 1;
 }
 
-.province-header {
+/* Shared election page header */
+.election-page-header {
   border-bottom: 1px solid #ccc;
   padding-bottom: 1em;
   margin-bottom: 2em;
 }
-.province-header h2 {
+.election-page-header h2 {
   font-size: 2.375em;
   margin-bottom: 0.5em;
   line-height: 1.2em;

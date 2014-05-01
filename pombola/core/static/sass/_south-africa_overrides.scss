@@ -2339,7 +2339,8 @@ ul.pager {
     padding: 2em 1em 0;
 }
 
-.province-header {
+/* Shared election page header */
+.election-page-header {
     border-bottom: 1px solid #ccc;
     padding-bottom: 1em;
     margin-bottom: 2em;
@@ -2348,29 +2349,57 @@ ul.pager {
         margin-bottom: 0.5em;
         line-height: 1.2em;
     }
-    .province-subtitle {
-        a {
-            color: $colour_green;
-            font-size: 1.5em;
-            @include lato-regular;
-            text-transform: capitalize;
-            text-decoration: none;
-            .change-province {
-                font-size: 0.583333333em;
-                text-decoration: none;
-                color: #777;
-            }
-            &:hover,
-            &:active,
-            &:focus {
-                color: $colour_primary;
-                text-decoration: underline;
-                .change-province {
-                    color: $colour_primary;
-                }
+
+}
+
+/* Overview page */
+.general-election-information {
+    @include clearfix;
+    padding: 2em 0;
+    border-bottom: 1px solid #ccc;
+    #election_countdown {
+        @media only all and (min-width: 640px), print {
+            float: right;
+            width: 34%;
+            .countdown_row {
+                position: static;
+                right: auto;
             }
         }
+    }
+}
 
+.election-introduction {
+    @media only all and (min-width: 640px), print {
+        float: left;
+        width: 63%;
+        margin-right: 3%;
+    }
+}
+
+
+/* Province pages */
+.province-subtitle {
+    a {
+        color: $colour_green;
+        font-size: 1.5em;
+        @include lato-regular;
+        text-transform: capitalize;
+        text-decoration: none;
+        .change-province {
+            font-size: 0.583333333em;
+            text-decoration: none;
+            color: #777;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            color: $colour_primary;
+            text-decoration: underline;
+            .change-province {
+                color: $colour_primary;
+            }
+        }
     }
 }
 
