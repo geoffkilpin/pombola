@@ -2378,24 +2378,32 @@ ul.pager {
 /* Overview page */
 .general-election-information {
     @include clearfix;
-    padding: 2em 0;
+    padding: 0 0 2em;
     border-bottom: 1px solid #ccc;
+    margin-bottom: 2em;
     #election_countdown {
         @media only all and (min-width: 640px), print {
             float: right;
-            width: 34%;
+            width: 38%;
             .countdown_row {
-                position: static;
-                right: auto;
+                float: right;
             }
         }
+    }
+    .countdown_row {
+        color: #fff;
+        background-color: $colour-primary;
+        padding: 1.5em 2.5em;
+        position: static;
+        right: auto;
+        float: left;
     }
 }
 
 .election-introduction {
     @media only all and (min-width: 640px), print {
         float: left;
-        width: 63%;
+        width: 59%;
         margin-right: 3%;
     }
 }
