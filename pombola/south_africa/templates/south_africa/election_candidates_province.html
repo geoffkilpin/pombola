@@ -6,17 +6,16 @@
         <p class="province-subtitle"> <a href="#">{{ province_name }} <span class="change-province">change</span></a></p>
     </div>
 
-    <ul>
 		{% for party in province_election_lists %}
-			<li>
-				{{ party.name }}
+			<div class="party-list">
+				<h3>{{ party.name }} <span class="for-province">for {{ province_name }}</span></h3>
 				<ul>
 					{% for candidate in party.position_set.all %}
 						<li>{{ candidate.person.name }}</li>
 					{% endfor %}
 				</ul>
-			</li>
+			</div>
 		{% endfor %}
-	</ul>
+
 
 {% endblock %}
