@@ -50,18 +50,14 @@ def date_to_partial_iso8601(approx_date):
         return d.strftime("%Y")
 
 def add_identifiers_to_properties(o, properties):
-    primary_id_scheme = 'org.mysociety.za'
-    secondary_identifiers = []
+    object_identifiers = []
     for scheme, identifiers in o.get_all_identifiers().items():
         sorted_identifiers = sorted(identifiers)
-        if scheme == primary_id_scheme:
-            properties['id'] = scheme + sorted_identifiers[0]
-        else:
-            secondary_identifiers.append({
-                'scheme': scheme,
-                'identifier': sorted_identifiers[0]
-            })
-    properties['identifiers'] = secondary_identifiers
+        object_identifiers.append({
+            'scheme': scheme,
+            'identifier': sorted_identifiers[0]
+        })
+    properties['identifiers'] = object_identifiers
 
 def add_contact_details_to_properties(o, properties):
     contacts = []
