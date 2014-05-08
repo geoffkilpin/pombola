@@ -122,6 +122,8 @@ def create_organisations(popit):
             add_identifiers_to_properties(o, properties)
             add_contact_details_to_properties(o, properties)
             if settings.COUNTRY_APP == 'south_africa':
+                properties['id'] = 'za.org.za/pombola/organisation/' + str(o.id)
+
                 if o.kind.slug == 'constituency-office' or o.kind.slug == 'constituency-area':
                     #assume constituency offices have only one linked location
                     places = o.place_set.all()
@@ -224,6 +226,8 @@ class Command(BaseCommand):
                 add_other_names(person, person_properties)
 
                 if settings.COUNTRY_APP == 'south_africa':
+                    person_properties['id'] = 'za.org.za/pombola/person/' + str(person.id)
+
                     person_properties['pa_url'] = settings.ZA_BASE_URL + person.get_absolute_url()
 
                     personinterests = person.interests_register_entries.all()
@@ -261,6 +265,8 @@ class Command(BaseCommand):
                         oslug = position.organisation.slug
                         organization_id = org_slug_to_id[oslug]
                         properties['organization_id'] = organization_id
+                    if settings.COUNTRY_APP == 'south_africa':
+                        properties['id'] = 'za.org.za/pombola/position/' + str(position.id)
                     print >> sys.stderr, "  creating the membership:", position
                     new_membership = popit.memberships.post(properties)
 
