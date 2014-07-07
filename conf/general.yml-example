@@ -79,6 +79,8 @@ COUNTRY_APP: kenya
 # Username and password for pmg_scraper command
 PMG_COMMITTEE_USER: ''
 PMG_COMMITTEE_PASS: ''
+#za_hansard ATC document committee notification email adddress
+ZA_COMMITTEE_NOTIFICATION_EMAIL: []
 
 # Popit API URL
 # For ZA development you can use 'http://sa-test.matthew.popit.dev.mysociety.org/api/v0.1/'

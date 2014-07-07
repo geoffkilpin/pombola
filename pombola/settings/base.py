@@ -331,6 +331,9 @@ QUESTION_CACHE  = os.path.join( HANSARD_CACHE, 'questions' )
 PMG_COMMITTEE_USER = config.get('PMG_COMMITTEE_USER', '')
 PMG_COMMITTEE_PASS = config.get('PMG_COMMITTEE_PASS', '')
 
+ZA_COMMITTEE_NOTIFICATION_EMAIL = config.get('ZA_COMMITTEE_NOTIFICATION_EMAIL', '')
+FROM_EMAIL = config.get('FROM_EMAIL','')
+
 # Which popit instance to use
 POPIT_API_URL = config.get('POPIT_API_URL')
 
