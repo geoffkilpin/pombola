@@ -286,12 +286,15 @@ class Command(LabelCommand):
             if gender:
                 defaults['gender'] = gender
 
-            if 'pa_url' in person:
-                # if a PA slug is present then it should be used
-                pa_slug = re.compile("^/person/(?P<slug>[a-zA-Z0-9-]+)/")
-                slug = slugify(pa_slug.search(person['pa_url']).group(1))
-            else:
-                slug = slugify(person['slug'])
+            try:
+                if 'pa_url' in person:
+                    # if a PA slug is present then it should be used
+                    pa_slug = re.compile("^/person/(?P<slug>[a-zA-Z0-9-]+)/")
+                    slug = slugify(pa_slug.search(person['pa_url']).group(1))
+                else:
+                    slug = slugify(person['slug'])
+            except:
+                continue
 
             p = get_or_create(Person,
                               commit=options['commit'],
@@ -309,7 +312,7 @@ class Command(LabelCommand):
             if options['commit'] and options['delete_old']:
                 p.alternative_names.all().delete()
 
-            if 'other_names' in person:
+            if 'other_names' in person and options['commit']:
                 # FIXME: check the exact intended meaning of this
                 # field - in sa.json many appear to just be surnames,
                 # but some are full names.
@@ -352,18 +355,31 @@ class Command(LabelCommand):
                 p.position_set.all().delete()
 
             for membership in person['memberships']:
+                if not 'organization_id' in membership:
+                    continue
 
                 for k in membership.keys():
                     check_unknown_field('membership', k)
 
                 organisation = id_to_organisation[membership['organization_id']]
 
-                position_title_name = get_position_title(membership.get('role'),
+                if 'role' in membership:
+                    position_title_name = get_position_title(membership.get('role'),
                                                          organisation.name,
                                                          organisation.kind.name)
+                else:
+                    position_title_name = ''
 
                 # FIXME: also decide about PositionTitle.requires_place
-                position_title = get_or_create(PositionTitle,
+
+                try:
+                    position_title = get_or_create(PositionTitle,
+                                               commit=options['commit'],
+                                               name=position_title_name,
+                                               defaults={'slug': slugify(position_title_name)})
+                except:
+                    position_title_name = u'Member'
+                    position_title = get_or_create(PositionTitle,
                                                commit=options['commit'],
                                                name=position_title_name,
                                                defaults={'slug': slugify(position_title_name)})
@@ -408,7 +424,10 @@ class Command(LabelCommand):
                           'title': position_title,
                           'category': 'political'}
                 for field in ('start_date', 'end_date'):
+                    #temp hack
                     if field in membership:
+                        if not re.match("[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}", membership[field]):
+                            membership[field] = membership[field] + '-01'
                         kwargs[field] = membership[field]
                 if place:
                     kwargs['place'] = place
