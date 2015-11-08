@@ -73,10 +73,14 @@ def verbose(message):
     if VERBOSE:
         print message.encode('utf-8')
 
+# there is probably a better way to incorporate id_schemes that use /
 known_id_schemes = ('org.mysociety.za',
                     'myreps_id',
                     'myreps_person_id',
-                    'za.gov.parliament')
+                    'za.gov.parliament',
+                    '/core_organisation/',
+                    '/core_person/',
+                    '/core_position/')
 
 id_re = re.compile('^(?P<scheme>' + '|'.join(known_id_schemes) + ')' +
                    '(?P<identifier>.*)$')
@@ -92,6 +96,15 @@ def split_popolo_id(popolo_id):
 def create_identifiers(popolo_entity, mz_object, commit=True):
     """Create all Identifier objects for mz_object based on popolo_entity"""
     popolo_id_scheme, popolo_id_identifier = split_popolo_id(popolo_entity['id'])
+
+    # don't create identifiers for ids from a previous pombola instance
+    pombola_id_schemes = [
+        '/core_organisation/',
+        '/core_person/',
+        '/core_position/'
+    ]
+    if popolo_id_scheme in pombola_id_schemes:
+        return
 
     mz_object_content_type = ContentType.objects.get_for_model(mz_object)
 
