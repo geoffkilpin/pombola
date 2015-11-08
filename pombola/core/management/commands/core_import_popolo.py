@@ -33,9 +33,13 @@ known_fields = {
                             'contact_details',
                             'other_names',
                             'biography',
-                            'memberships',)),
-               'ignored': set(('family_name',
-                               'initials_alt',
+                            'memberships',
+                            'family_name',
+                            'given_name',
+                            'gender',
+                            'sort_name',
+                            'pa_url',)),
+               'ignored': set(('initials_alt',
                                'given_names',))},
     'membership': {'used': set(('id',
                                 'organization_id',
@@ -265,6 +269,22 @@ class Command(LabelCommand):
             defaults = {'legal_name': name}
             if title:
                 defaults['title'] = title
+
+            given_name = person.get('given_name')
+            if given_name:
+                defaults['given_name'] = given_name
+
+            family_name = person.get('given_name')
+            if given_name:
+                defaults['given_name'] = given_name
+
+            sort_name = person.get('sort_name')
+            if sort_name:
+                defaults['sort_name'] = sort_name
+
+            gender = person.get('gender')
+            if gender:
+                defaults['gender'] = gender
 
             if 'pa_url' in person:
                 # if a PA slug is present then it should be used
