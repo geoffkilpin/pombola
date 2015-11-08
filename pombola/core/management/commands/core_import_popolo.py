@@ -266,7 +266,12 @@ class Command(LabelCommand):
             if title:
                 defaults['title'] = title
 
-            slug = slugify(person['slug'])
+            if 'pa_url' in person:
+                # if a PA slug is present then it should be used
+                pa_slug = re.compile("^/person/(?P<slug>[a-zA-Z0-9-]+)/")
+                slug = slugify(pa_slug.search(person['pa_url']).group(1))
+            else:
+                slug = slugify(person['slug'])
 
             p = get_or_create(Person,
                               commit=options['commit'],
